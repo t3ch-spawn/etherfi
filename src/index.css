@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@layer base {
+  .stat-rect {
+    @apply w-[314px] overflow-hidden whitespace-nowrap h-[1587px] absolute flex justify-center items-center rotate-[49.72deg] origin-center font-bold;
+  }
+}
+
+.stat-rect div {
+  font-size: 78px;
+  transform: rotate(-90deg);
+  line-height: 100%;
+}
+
+.stat-rect span {
+  font-size: 38px;
+  margin-left: 10px;
+  line-height: 100%;
+}
+
+.spline-scene {
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 90%);
+}
