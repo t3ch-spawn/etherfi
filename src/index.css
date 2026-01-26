@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+
+@font-face {
+  font-family: "Polymath";
+  src: url("/font/Polymath bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,24 +17,26 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #141417;
+  font-family: "Geist", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.polymath {
+  font-family: "Polymath";
+}
+
 @layer base {
   .stat-rect {
     @apply w-[314px] overflow-hidden whitespace-nowrap h-[1587px] absolute flex justify-center items-center rotate-[49.72deg] origin-center font-bold;
   }
 }
 
-.stat-rect div {
-  font-size: 78px;
-  transform: rotate(-90deg);
-  line-height: 100%;
+.hero {
+  clip-path: url(#hero-clip);
 }
 
-.stat-rect span {
-  font-size: 38px;
-  margin-left: 10px;
-  line-height: 100%;
-}
-
-.spline-scene {
-  clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 90%);
+.hero-path {
+  /* transform: translate(37vw, 22vh); */
 }

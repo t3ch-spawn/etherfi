@@ -35,35 +35,43 @@ export default function Stats() {
           opacity: 0,
           stagger: 0.09,
         },
-        "<0.4"
+        "<0.4",
       );
   });
 
+  const stats = [
+    {
+      value: 7.96,
+      label: "Total Value Locked",
+      suffix: "B",
+      prefix: "$",
+      bg: "#FF983F", height: 750
+    },
+    { value: 13, label: "Stake Rewards", suffix: "%", bg: "#16F95E", height: 792 },
+    { value: 6, label: "Liquid Rewards", suffix: "%", bg: "#767FFC", height: 750 },
+    { value: 3, label: "Credit Card Cashback", suffix: "%", bg: "#F25390", height: 681 },
+  ];
+
   return (
-    <section className="max-h-[750px] stats-cont h-[100vh] flex relative justify-start items-start overflow-hidden ">
-      <div className="stat-rect top-[-90%] left-[-4%] bg-[#FFC23F]">
-        <div className="ml-[140px] mb-[40px]">
-          $7.96B <span>TVL</span>
-        </div>
-      </div>
-      <div className="stat-rect top-[-70%] left-[15%] bg-[#16F95E]">
-        <div>
-          3% <span>Stake Rewards</span>
-        </div>
-      </div>
-      <div className="stat-rect z-[5] relative top-[-58%] left-[39%] bg-[#6C75FF]">
-        <div>
-          6% <span>Liquid Rewards</span>
-        </div>
-      </div>
-      <div className="stat-rect top-[-45%] left-[63%] bg-[#F25490]">
-        <div>
-          3% <span>Credit Card Cashback</span>
-        </div>
-      </div>
-      <div className="stat-rect top-[-4%] right-[6.2%] !w-[340px] bg-[#3742DC]">
-        <div className="text-white !rotate-[-50deg] mb-[270px]">Ether.fi</div>
-      </div>
+    <section className=" stats-cont pt-[80px] flex gap-[12px] relative justify-center items-end overflow-hidden ">
+      {stats.map((stat) => {
+        return (
+          <div
+            className="rounded-[64px] w-full max-w-[346px] flex flex-col justify-center items-center gap-[32px]"
+            style={{ backgroundColor: stat.bg, height: stat.height }}
+          >
+            {/* Value */}
+            <div className="text-[76px] font-bold leading-[100%] polymath">
+              <span>{stat.prefix}</span> 
+              <span>{stat.value}</span> 
+              <span>{stat.suffix}</span>
+            </div>
+
+            {/* Label */}
+            <div className="text-[38px] font-bold leading-[100%] text-center break-words max-w-[190px]">{stat.label}</div>
+          </div>
+        );
+      })}
     </section>
   );
 }
