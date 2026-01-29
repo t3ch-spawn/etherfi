@@ -1,43 +1,58 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
+import { ScrollTrigger, SplitText } from "gsap/all";
 import Lenis from "lenis";
-import React from "react";
+import React, { useRef } from "react";
 
 export default function Stats() {
-  useGSAP(() => {
-    // Initialize Lenis
-    const lenis = new Lenis({
-      autoRaf: true,
-    });
+  const sectionRef = useRef(null);
+  const tlRef = useRef(null);
 
-    gsap.registerPlugin(ScrollTrigger);
+  useGSAP(
+    () => {
+      // Initialize Lenis
+      const lenis = new Lenis({
+        autoRaf: true,
+      });
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".stats-cont",
-          start: "top 50%",
-        },
-      })
-      .from(".stat-rect", {
-        opacity: 0,
-        // scale: 0.6,
-        y: "50%",
-        x: "-300%",
+      const split = SplitText.create(".stat-rect", {
+        type: "words",
+        mask: "words",
+        wordsClass: "wordAnim",
+      });
 
-        stagger: 0.1,
-      })
-      .from(
-        ".stat-rect div",
-        {
-          x: "60%",
-          opacity: 0,
-          stagger: 0.09,
-        },
-        "<0.4",
-      );
-  });
+      tlRef.current = gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".stats-cont",
+            start: "top 20%",
+          },
+        })
+        .from(".stat-rect", {
+          scaleY: 0,
+          ease: "back.out(1)",
+          duration: 0.6,
+          stagger: 0.1,
+          transformOrigin: "bottom",
+        });
+
+      const statRects = document.querySelectorAll(".stat-rect");
+      statRects.forEach((rect, idx) => {
+        const words = rect.querySelectorAll(".wordAnim");
+        tlRef.current.from(
+          words,
+          {
+            yPercent: 100,
+            stagger: 0.05,
+            ease: "power2.out",
+            duration: 0.6,
+          },
+          idx === 0 ? "<0.2" : "<",
+        );
+      });
+    },
+    { scope: sectionRef.current },
+  );
 
   const stats = [
     {
@@ -45,30 +60,55 @@ export default function Stats() {
       label: "Total Value Locked",
       suffix: "B",
       prefix: "$",
-      bg: "#FF983F", height: 750
+      bg: "#FF983F",
+      height: 750,
     },
-    { value: 13, label: "Stake Rewards", suffix: "%", bg: "#16F95E", height: 792 },
-    { value: 6, label: "Liquid Rewards", suffix: "%", bg: "#767FFC", height: 750 },
-    { value: 3, label: "Credit Card Cashback", suffix: "%", bg: "#F25390", height: 681 },
+    {
+      value: 13,
+      label: "Stake Rewards",
+      suffix: "%",
+      bg: "#16F95E",
+      height: 792,
+    },
+    {
+      value: 6,
+      label: "Liquid Rewards",
+      suffix: "%",
+      bg: "#767FFC",
+      height: 750,
+    },
+    {
+      value: 3,
+      label: "Credit Card Cashback",
+      suffix: "%",
+      bg: "#F25390",
+      height: 681,
+    },
   ];
 
   return (
-    <section className=" stats-cont pt-[80px] flex gap-[12px] relative justify-center items-end overflow-hidden ">
-      {stats.map((stat) => {
+    <section
+      ref={sectionRef}
+      className=" stats-cont pt-[80px] flex gap-[12px] relative justify-center items-end overflow-hidden "
+    >
+      {stats.map((stat, idx) => {
         return (
           <div
-            className="rounded-[64px] w-full max-w-[346px] flex flex-col justify-center items-center gap-[32px]"
+            key={idx}
+            className="stat-rect rounded-[64px] w-full max-w-[346px] flex flex-col justify-center items-center gap-[32px]"
             style={{ backgroundColor: stat.bg, height: stat.height }}
           >
             {/* Value */}
             <div className="text-[76px] font-bold leading-[100%] polymath">
-              <span>{stat.prefix}</span> 
-              <span>{stat.value}</span> 
+              <span>{stat.prefix}</span>
+              <span>{stat.value}</span>
               <span>{stat.suffix}</span>
             </div>
 
             {/* Label */}
-            <div className="text-[38px] font-bold leading-[100%] text-center break-words max-w-[190px]">{stat.label}</div>
+            <div className="text-[38px] font-bold leading-[100%] text-center break-words max-w-[263px]">
+              {stat.label}
+            </div>
           </div>
         );
       })}

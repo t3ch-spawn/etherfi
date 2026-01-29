@@ -28,15 +28,44 @@ body {
 }
 
 @layer base {
-  .stat-rect {
-    @apply w-[314px] overflow-hidden whitespace-nowrap h-[1587px] absolute flex justify-center items-center rotate-[49.72deg] origin-center font-bold;
+  .center-x {
+    @apply translate-x-[-50%]  left-[50%];
+  }
+
+  .center-y {
+    @apply translate-y-[-50%] top-[50%];
+  }
+
+  .center-xy {
+    @apply translate-y-[-50%] top-[50%] translate-x-[-50%]  left-[50%];
+  }
+
+  .sub-heading {
+    @apply text-[56px] font-bold leading-[110%] polymath;
   }
 }
 
 .hero {
-  clip-path: url(#hero-clip);
+  /* mask: url(#hero-clip); */
+  /* clip-path: url(#hero-clip); */
+  mask-image: url("/hero-mask.svg");
+  mask-repeat: no-repeat;
+  mask-position: 50% 50%;
+  mask-size: 9000px;
 }
 
+
+@media screen and (min-width: 1700px) {
+
+  .hero{
+    mask-size: 30000px;
+  }
+  
+}
 .hero-path {
   /* transform: translate(37vw, 22vh); */
 }
+
+/* .black-rip{
+  clip-path: polygon(0% 0%, 97.4% 0%, 97.4% 100%, 0% 100%);
+} */

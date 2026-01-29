@@ -4,32 +4,35 @@ import React, { useEffect, useRef } from "react";
 
 export default function HeroClip() {
   const clipRef = useRef(null);
+  const svgRef = useRef(null);
 
-  useGSAP(() => {
-    gsap.to(".hero-path", {
-      scale: 1,
-      x: "37vw",
-      y: "22vh",
-      scrollTrigger: {
-        trigger: ".hero-trigger",
-        start: "15% top",
-        end: "96% bottom",
-        scrub: true,
-      },
-    });
-  }, []);
+  useGSAP(
+    () => {
+      gsap.to(".hero-path", {
+        scale: 1,
+        x: "37vw",
+        y: "22vh",
+        scrollTrigger: {
+          trigger: ".hero-trigger",
+          start: "15% top",
+          end: "96% bottom",
+          scrub: true,
+        },
+      });
+    },
+    { scope: svgRef.current },
+  );
+
+ 
 
   return (
     <svg
       viewBox="0 0 371 363"
-      className="pointer-events-none  fixed top-0 w-full h-full inset-0 flex justify-center items-center"
+      //   viewBox="0 0 0 0"
+      className="pointer-events-none "
+      ref={svgRef}
     >
-      <clipPath
-        ref={clipRef}
-        className=""
-        id="hero-clip"
-        clipPathUnits=""
-      >
+      <clipPath ref={clipRef} className="" id="hero-clip" clipPathUnits="">
         <path
           className="hero-path block translate-x-[37vw] translate-y-[22vh] scale-[25] origin-center "
           d="M101.207 4.76427L153.875 -5.44696e-06L178.956 39.0765L77.7489 268.404L31.6655 276.391L0 234.092L101.207 4.76427Z"
