@@ -3,7 +3,6 @@ import { SplitText } from "gsap/all";
 import gsap from "gsap";
 
 export default function TextAnimation() {
-  gsap.registerPlugin(SplitText);
 
   useGSAP(() => {
     const cleanup = initialiseTextAnim();

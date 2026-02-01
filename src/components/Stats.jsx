@@ -47,7 +47,7 @@ export default function Stats() {
             ease: "power2.out",
             duration: 0.6,
           },
-          idx === 0 ? "<0.2" : "<",
+          idx === 0 ? "<0.3" : "<",
         );
       });
     },
@@ -95,7 +95,7 @@ export default function Stats() {
         return (
           <div
             key={idx}
-            className="stat-rect rounded-[64px] w-full max-w-[346px] flex flex-col justify-center items-center gap-[32px]"
+            className="stat-rect rounded-[64px] w-full max-w-[346px] flex flex-col justify-center items-center gap-[16px]"
             style={{ backgroundColor: stat.bg, height: stat.height }}
           >
             {/* Value */}

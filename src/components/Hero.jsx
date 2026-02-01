@@ -1,7 +1,4 @@
-import Spline from "@splinetool/react-spline";
 import WhiteBtn from "./reusables/WhiteBtn";
-import HeroClip from "./HeroClip";
-import HeroClip2 from "./HeroClip2";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap/gsap-core.js";
 
@@ -16,7 +13,7 @@ export default function Hero() {
         scrub: true,
       },
     });
-  });
+    });
 
   return (
     <>
