@@ -12,6 +12,19 @@ export default function SecureBattle() {
       "sec-battle-text",
       "sec-battle-btn",
     );
+
+    gsap.from(".sec-battle-card", {
+      yPercent: 50,
+      opacity: 0,
+      ease: "back.out(2)",
+      stagger: -0.2,
+      scrollTrigger: {
+        trigger: ".secure-battle-cont",
+        start: "top 40%",
+        end: "bottom 50%",
+        toggleActions: "play reverse play reverse",
+      },
+    });
   });
 
   return (

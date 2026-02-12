@@ -61,3 +61,39 @@ body {
 .hero-path {
   /* transform: translate(37vw, 22vh); */
 }
+
+.lottie-clip {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 30%,
+    97% 70%,
+    72% 95%,
+    30% 100%,
+    0 100%,
+    0% 30%
+  );
+}
+
+.hover-card-cont,
+.credit-card-cont {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.hover-card {
+  /* transform: rotateY(-10deg) rotateX(10deg); */
+}
+
+.early-access-gradient {
+  background: radial-gradient(circle, #ffc23e, #997425);
+}
+
+.reward-tag {
+  background: linear-gradient(to right, #202023, #20202380);
+}
+
+.ripple-img {
+  object-fit: cover;
+  /* background-color: #1b1b1f */
+}

@@ -60,28 +60,28 @@ export default function Stats() {
       label: "Total Value Locked",
       suffix: "B",
       prefix: "$",
-      bg: "#FF983F",
+      bg: "#FCC40A",
       height: 750,
     },
     {
       value: 13,
       label: "Stake Rewards",
       suffix: "%",
-      bg: "#16F95E",
+      bg: "#FCC40A",
       height: 792,
     },
     {
       value: 6,
       label: "Liquid Rewards",
       suffix: "%",
-      bg: "#767FFC",
+      bg: "#FCC40A",
       height: 750,
     },
     {
       value: 3,
       label: "Credit Card Cashback",
       suffix: "%",
-      bg: "#F25390",
+      bg: "#FCC40A",
       height: 681,
     },
   ];
@@ -89,7 +89,7 @@ export default function Stats() {
   return (
     <section
       ref={sectionRef}
-      className=" stats-cont pt-[80px] flex gap-[12px] relative justify-center items-end overflow-hidden "
+      className=" stats-cont text-black pt-[80px] flex gap-[12px] relative justify-center items-end overflow-hidden "
     >
       {stats.map((stat, idx) => {
         return (

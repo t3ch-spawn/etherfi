@@ -7,7 +7,7 @@ export default function Navbar() {
   const icons = [plant, liquid, money_bag, fashion_bag];
 
   return (
-    <nav>
+    <nav className="sticky top-0">
       <div className="flex justify-start items-center gap-[22px]">
         {icons.map((icon) => {
           return <img src={icon} alt="" />;

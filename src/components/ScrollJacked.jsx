@@ -23,20 +23,14 @@ export default function ScrollJacked() {
       }),
     });
 
-    gsap.to(".crypto-card", {
-      x: "-100%",
-      repeat: -1,
-      duration: 6,
-      ease: "none",
-    });
   });
 
   return (
     <div className="bg-gold jacked-container min-h-[400vh]">
       {/* Container for images and cards */}
-      <div className="sticky z-[2] top-0 min-h-[100vh]">
+      <div className="sticky z-[2] top-0 min-h-[100vh] overflow-hidden">
         <RestakingCards />
-        {/* <SecBattleCards/> */}
+        <SecBattleCards/>
       </div>
 
       <div className="z-[6] sticky top-0 min-h-[100vh] mt-[-100vh] w-full overflow-hidden">
@@ -51,7 +45,7 @@ export default function ScrollJacked() {
       </div>
 
       {/* Content on the left */}
-      <div className="z-[10] pt-[10vh] gap-[20vh] flex flex-col justify-center items-center text-white min-h-[100vh] w-[50%] relative">
+      <div className="z-[10] pt-[10vh] gap-[30vh] flex flex-col justify-center items-center text-white min-h-[100vh] w-[50%] relative">
         {" "}
         <Restaking />
         <SecureBattle />
